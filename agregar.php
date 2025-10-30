@@ -1,10 +1,10 @@
-<?php 
+<?php
 session_start();
 if(!isset($_SESSION['usuario'])) {
     header("Location: login.php");
     exit;
 }
-include "conexion.php";
+include"conexion.php";
 
 if($_SERVER['REQUEST_METHOD'] === 'POST') {
     $d = $_POST['nombre'] ?? '';
@@ -55,3 +55,4 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 <?php
 $conexion->close();
 ?>
+
