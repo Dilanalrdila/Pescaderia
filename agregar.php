@@ -1,12 +1,12 @@
-<?php 
+<?php
 session_start();
-if(!isset($_SESSION['usuario'])) {
+if (!isset($_SESSION['usuario'])) {
     header("Location: login.php");
     exit;
 }
 include "conexion.php";
 
-if($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $d = $_POST['nombre'] ?? '';
     $precio = $_POST['precio'] ?? '0';
     $peso = $_POST['peso'] ?? '';
@@ -39,7 +39,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
         <option value="">-- Selecciona una categoría --</option>
         <?php
         $cat_res = $conexion->query("SELECT id, nombre FROM categorias ORDER BY nombre ASC");
-        while($cat = $cat_res->fetch_assoc()) {
+        while ($cat = $cat_res->fetch_assoc()) {
             echo "<option value='{$cat['id']}'>" . htmlspecialchars($cat['nombre']) . "</option>";
         }
         $cat_res->free();
