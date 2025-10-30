@@ -2,7 +2,7 @@
 // conexion.php
 $host = "localhost";
 $user = "root";
-$pass = "";
+$pass = "123";
 $db   = "tienda_php";
 
 $conexion = new mysqli($host, $user, $pass, $db);
@@ -11,3 +11,4 @@ if ($conexion->connect_error) {
     exit;
 }
 ?>
+
