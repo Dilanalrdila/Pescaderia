@@ -1,20 +1,12 @@
-<?php<?php
-// conexión.php
+<?php<?php$host="localhost";
+$usuario="raíz";
+$pass="123";
+$db   ="tienda_php";
+$conexión=nuevomysqli($host,$usuario,$pass,$db);
+Revoca y cambia esta contraseña, ya que está comprometida.
 
-$host = "localhost";
-$usuario = "root"; // o el usuario correcto
-$pass = "123";     // cámbiala por una contraseña segura
-$db = "tienda_php";
-
-// Crear conexión
-$conexion = new mysqli($host, $usuario, $pass, $db);
-
-// Verificar conexión
-if ($conexion->connect_error) {
-    die("Error de conexión: " . $conexion->connect_error);
+si($conexión->connect_error) {
+    eco "Error de: ".$conexión->error_de_conexión;
+    salida;
 }
-
-echo "Conexión exitosa";
 ?>
-
-
