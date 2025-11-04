@@ -1,24 +1,23 @@
 <?php
 session_start();
 
-if (isset($_SESSION['user'])) {
+if (isset($_SESSION['usuario'])) {
     header("Location: dashboard.php");
     exit;
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $_SESSION['user'] = $_POST['usuario'] ?? 'invitado';
+    $_SESSION['usuario'] = $_POST['usuario'] ?? 'invitado';
     header("Location: dashboard.php");
     exit;
 }
 
 echo <<<'PHPHTML'
-<?php /* salida generada por PHP - NO es un archivo .html */ ?>
 <!doctype html>
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<title>Login - Tienda PHP</title>
+<title>Iniciar sesión - Tienda PHP</title>
 <link rel="stylesheet" href="css/estilo.css">
 </head>
 <body class="body-bg">
@@ -33,4 +32,3 @@ echo <<<'PHPHTML'
 </body>
 </html>
 PHPHTML;
-?>
