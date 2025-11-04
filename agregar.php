@@ -1,23 +1,26 @@
 <?php
 session_start();
 
+use App\Config\Conexion;
+require_once __DIR__ . '/App/Config/Conexion.php'; // carga la clase con namespace
+
 if (!isset($_SESSION['usuario'])) {
     header("Location: login.php");
     exit;
 }
 
-// Corrección: usar include_once para evitar inclusiones duplicadas
-include_once "conexion.php";
+// Conectarse a la base de datos usando la clase con namespace
+$conexion = Conexion::conectar();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $d = $_POST['nombre'] ?? '';
+    $nombre = $_POST['nombre'] ?? '';
     $precio = $_POST['precio'] ?? '0';
     $peso = $_POST['peso'] ?? '';
     $id_categoria = $_POST['id_categoria'] ?? 0;
     $descripcion = $_POST['descripcion'] ?? '';
 
     $stmt = $conexion->prepare("INSERT INTO productos (nombre, precio, peso, id_categoria, descripcion) VALUES (?, ?, ?, ?, ?)");
-    $stmt->bind_param("sdsss", $d, $precio, $peso, $id_categoria, $descripcion);
+    $stmt->bind_param("sdsss", $nombre, $precio, $peso, $id_categoria, $descripcion);
     $stmt->execute();
     $stmt->close();
 
