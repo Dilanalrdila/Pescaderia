@@ -1,14 +1,20 @@
-<?php
-// conexion.php
-$host = "localhost";
-$user = "root";
-$pass = "123";
-$db   = "tienda_php";
+<?php<?php
+// conexión.php
 
-$conexion = new mysqli($host, $user, $pass, $db);
+$host = "localhost";
+$usuario = "root"; // o el usuario correcto
+$pass = "123";     // cámbiala por una contraseña segura
+$db = "tienda_php";
+
+// Crear conexión
+$conexion = new mysqli($host, $usuario, $pass, $db);
+
+// Verificar conexión
 if ($conexion->connect_error) {
-    echo "Error de conexión: " . $conexion->connect_error;
-    exit;
+    die("Error de conexión: " . $conexion->connect_error);
 }
+
+echo "Conexión exitosa";
 ?>
+
 
